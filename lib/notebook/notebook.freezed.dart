@@ -20,6 +20,9 @@ Notebook _$NotebookFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Notebook {
+  @JsonKey(name: '_id')
+  @IdConverter()
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   @DateTimeConverter()
@@ -39,7 +42,8 @@ abstract class $NotebookCopyWith<$Res> {
       _$NotebookCopyWithImpl<$Res, Notebook>;
   @useResult
   $Res call(
-      {String title,
+      {@JsonKey(name: '_id') @IdConverter() String id,
+      String title,
       String body,
       @DateTimeConverter() DateTime createdAt,
       @DateTimeConverter() DateTime updatedAt});
@@ -58,12 +62,17 @@ class _$NotebookCopyWithImpl<$Res, $Val extends Notebook>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? body = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -92,7 +101,8 @@ abstract class _$$_NotebookCopyWith<$Res> implements $NotebookCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String title,
+      {@JsonKey(name: '_id') @IdConverter() String id,
+      String title,
       String body,
       @DateTimeConverter() DateTime createdAt,
       @DateTimeConverter() DateTime updatedAt});
@@ -109,12 +119,17 @@ class __$$_NotebookCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? body = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
     return _then(_$_Notebook(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -139,7 +154,8 @@ class __$$_NotebookCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Notebook implements _Notebook {
   const _$_Notebook(
-      {required this.title,
+      {@JsonKey(name: '_id') @IdConverter() required this.id,
+      required this.title,
       required this.body,
       @DateTimeConverter() required this.createdAt,
       @DateTimeConverter() required this.updatedAt});
@@ -147,6 +163,10 @@ class _$_Notebook implements _Notebook {
   factory _$_Notebook.fromJson(Map<String, dynamic> json) =>
       _$$_NotebookFromJson(json);
 
+  @override
+  @JsonKey(name: '_id')
+  @IdConverter()
+  final String id;
   @override
   final String title;
   @override
@@ -160,7 +180,7 @@ class _$_Notebook implements _Notebook {
 
   @override
   String toString() {
-    return 'Notebook(title: $title, body: $body, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Notebook(id: $id, title: $title, body: $body, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -168,6 +188,7 @@ class _$_Notebook implements _Notebook {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Notebook &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.createdAt, createdAt) ||
@@ -179,7 +200,7 @@ class _$_Notebook implements _Notebook {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, title, body, createdAt, updatedAt);
+      Object.hash(runtimeType, id, title, body, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -197,13 +218,18 @@ class _$_Notebook implements _Notebook {
 
 abstract class _Notebook implements Notebook {
   const factory _Notebook(
-      {required final String title,
+      {@JsonKey(name: '_id') @IdConverter() required final String id,
+      required final String title,
       required final String body,
       @DateTimeConverter() required final DateTime createdAt,
       @DateTimeConverter() required final DateTime updatedAt}) = _$_Notebook;
 
   factory _Notebook.fromJson(Map<String, dynamic> json) = _$_Notebook.fromJson;
 
+  @override
+  @JsonKey(name: '_id')
+  @IdConverter()
+  String get id;
   @override
   String get title;
   @override
